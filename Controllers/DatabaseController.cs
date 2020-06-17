@@ -41,7 +41,7 @@ namespace PESQLi.Controllers
 
             ModelContext.Seed.Apply(context);
 
-            return Ok();
+            return Ok("Database reset successful");
         }
     }
 }
