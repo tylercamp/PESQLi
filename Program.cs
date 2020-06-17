@@ -19,7 +19,10 @@ namespace PESQLi
             using (var scope = host.Services.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<ModelContext>();
-                context.Database.EnsureCreated();
+                context.Database.EnsureDeleted();
+                if (!context.Database.EnsureCreated())
+                    Console.WriteLine("WARNING: Call to Database.EnsureCreated failed");
+
                 ModelContext.Seed.Apply(context);
             }
 
